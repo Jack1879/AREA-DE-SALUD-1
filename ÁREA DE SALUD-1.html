@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clasificación de Presión Arterial</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        padding-top: 40px;
+    }
+
+    section {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        width: 330px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        text-align: center;
+    }
+
+    input {
+        padding: 8px;
+        width: 85%;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        margin: 6px 0;
+        font-size: 16px;
+    }
+
+    button {
+        padding: 10px 20px;
+        background: #0078ff;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    button:hover {
+        background: #005fcc;
+    }
+
+    .output {
+        margin-top: 15px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+<section id="e1">
+<h3>Clasificación de Presión Arterial</h3>
+<input type="number" id="sis" placeholder="Sistólica">
+<input type="number" id="dia" placeholder="Diastólica">
+<button onclick="ej1()">Clasificar</button>
+<div class="output" id="out1"></div>
+</section>
+<script>
+function ej1() {
+    let s = parseInt(document.getElementById("sis").value);
+    let d = parseInt(document.getElementById("dia").value);
+    let r = "";
+
+    if (s < 120 && d < 80) r = "Normal";
+    else if (s >= 120 && s <= 129 && d < 80) r = "Elevada";
+    else if ((s >= 130 && s <= 139) || (d >= 80 && d <= 89)) r = "HTA Grado 1";
+    else if (s >= 140 || d >= 90) r = "HTA Grado 2";
+    else r = "Valores no clasificados";
+
+    document.getElementById("out1").innerText = "Clasificación: " + r;
+}
+</script>
+</body>
+</html>
